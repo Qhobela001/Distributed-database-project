@@ -1,0 +1,5 @@
+# Use the official PgAdmin image as a base
+FROM dpage/pgadmin4
+
+# Expose the default PgAdmin port
+EXPOSE 80

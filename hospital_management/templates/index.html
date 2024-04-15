@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>CRUD With Postgresql</title>
+</head>
+<body>
+    <center>
+        <h1>Create CRUD With Postgresql</h1>
+        <h3>Distributed Assignment</h3>
+        <hr/>
+        <a href="{% url 'Inserttemp' %}">Create New Patient</a>
+        <table border="1">
+            <tr>
+                <th>Patient ID</th>
+                <th>Patient Name</th>
+                <th>Age</th>
+                <th>Action</th>
+            </tr>
+            {% for result in data %}
+            <tr>
+                <td>{{result.id}}</td>
+                <td>{{result.name}}</td>
+                <td>{{result.age}}</td>
+                <td><a href="edit/{{result.id}}">Edit</a></td>
+                <td><a href="delete/{{result.id}}" onclick="return confirm('Are You Sure?')">Delete</a></td>
+            </tr>
+            {% endfor %}
+    </center>
+</body>
+</html>

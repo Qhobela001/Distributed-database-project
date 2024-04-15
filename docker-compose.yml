@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  quthing_db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: quthing_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1111
+    ports:
+      - "5439:5432"
+    volumes:
+      - quthing_data:/var/lib/postgresql/data
+
+  maseru_db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: maseru_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1111
+    ports:
+      - "5438:5432"
+    volumes:
+      - maseru_data:/var/lib/postgresql/data
+
+  mafeteng_db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: mafeteng_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1111
+    ports:
+      - "5437:5432"
+    volumes:
+      - mafeteng_data:/var/lib/postgresql/data
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - quthing_db
+      - maseru_db
+      - mafeteng_db
+      - pgadmin
+
+  pgadmin:
+    build:
+      context: .
+      dockerfile: Dockerfile.pgadmin
+    ports:
+      - "5051:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: monahengmothabeng@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: 1111
+
+
+volumes:
+  postgres_data:
+  quthing_data:
+  maseru_data:
+  mafeteng_data:
