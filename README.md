@@ -1,6 +1,6 @@
 # Distributed-database-project
 
-# Serve_Chat
+# Nthsoekhe HMIS 
 This a distributed system based Health Management system application made using Django Channels, Postgres and Docker.
 
 ## Project Architecture:
