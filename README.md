@@ -24,3 +24,5 @@ the mapped database volume directory will be created as "data" in your project d
 ## Setup development environment
 
 In order to setup local development environemnt you can simply create a virtual environment with -env in the end of environment name to ensure it is ignored by .dockerignore and .gitignore. requirements.txt for individual service is provided in it's directory.
+
+For the current submission, the only working node and database are those of Quthing Database, as others are still in the development stage.
